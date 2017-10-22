@@ -4,13 +4,25 @@ info:
   description: "Descricao da API de pagamento"
   version: "1.0.0"
   title: "Pagamento API"
-host: "localhost:8080"
-basePath: "/nataly-api/v1"
-schemes:
-- "http"
+# host: "localhost:8080"
+# basePath: "/nataly-api/v1"
+# schemes:
+# - "http"
+  contact:
+    email: "carlinstr@gmail.com"
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    
+tags: 
+  - name: "pagamentos"
+    description: "Acesso a operações de pagamento"
+
 paths:
   /pagamentos:
     post:
+      tags: 
+        - "pagamentos"
       summary: "Cria novo pagamento"
       description: "Endpoint de pagamento"
       operationId: "criarPagamento"
@@ -36,6 +48,8 @@ paths:
               description: "uri do novo pagamento"
   /pagamentos/{id}:
     get:
+      tags: 
+        - "pagamentos"
       operationId: "buscaPagamento"
       description: "|
         O Pagamentos delete endpoint *busca o* pagamento."
@@ -52,6 +66,8 @@ paths:
             $ref: "#/definitions/Pagamento"
           headers: {}
     put:
+      tags: 
+        - "pagamentos"
       summary: "Confirma o pagamento"
       operationId: "confirmarPagamento"
       description: "|
@@ -68,6 +84,8 @@ paths:
           schema:
             $ref: "#/definitions/Pagamento"
     delete:
+      tags: 
+        - "pagamentos"
       summary: Cancela um pagamento
       operationId: "cancelarPagamento"
       description: "|
@@ -115,3 +133,9 @@ definitions:
         type: "number"
         format: "double"
         description: "Valor do pagamento."
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /carledwinti/carledwinj-swagger-basic/1.0.0
+schemes:
+ - https
+ - http
