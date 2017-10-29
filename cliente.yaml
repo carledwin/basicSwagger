@@ -1,0 +1,141 @@
+swagger: "2.0"
+info:
+  description: "API para cadastro e manutenção de CLIENTES"
+  version: "1.0.0"
+  title: "Cliente API"
+  contact:
+    email: "carlinstr@gmail.com"
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# Added by API Auto Mocking Plugin
+host: "localhost:8080"
+basePath: /carledwin/v1
+schemes:
+ - https
+ - http
+    
+tags: 
+  - name: "Consulta"
+    description: "Acesso a operações de consulta de CLIENTES"
+  - name: "Manutenção"
+    description: "Acesso a operações de manutençao de CLIENTES"
+
+paths:
+  
+  /clientes:
+    
+    post:
+      tags: 
+        - "Manutenção"
+      summary: "Cria novo cliente"
+      operationId: "criarCliente"
+      description: "|
+        endpoint *cria o* cliente."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "cliente"
+        description: "Informações do Cliente."
+        required: true
+        schema:
+          $ref: "#/definitions/Cliente"
+      responses:
+        201:
+          description: "Novo cliente criado."
+          schema:
+            $ref: "#/definitions/Cliente"
+          headers:
+            Location:
+              type: "string"
+              description: "uri do novo cliente."
+  
+  /clientes/{id}:
+    
+    get:
+      tags: 
+        - "Consulta"
+      summary: "Busca de cliente"
+      operationId: "buscaCliente"
+      description: "|
+        endpoint *busca o* cliente."
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Cliente"
+          headers: {}
+    
+    put:
+      tags: 
+        - "Manutenção"
+      summary: "Altera de cliente"
+      operationId: "alteraCliente"
+      description: "|
+        endpoint *altera o* cliente."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Cliente alterado."
+          schema:
+            $ref: "#/definitions/Cliente"
+    
+    delete:
+      tags: 
+        - "Manutenção"
+      summary: "Remove o cliente"
+      description: "|
+        endpoint *remove o* cliente."
+      operationId: "removerCliente"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "Cliente removido."
+          
+definitions:
+  Cliente:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "Id do cliente."
+      nome:
+        type: "string"
+        description: "Nome do cliente"
+      sobrenome:
+        type: "string"
+        description: "Sobrenome do cliente"
+      status:
+        type: "string"
+        description: "Status do cliente"
+      datanascimento:
+        type: "string"
+        format: "date"
+        description: "Data de nascimento do cliente"
