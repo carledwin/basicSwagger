@@ -4,16 +4,15 @@ info:
   description: "Descricao da API de pagamento"
   version: "1.0.0"
   title: "Pagamento API"
-# host: "localhost:8080"
-# basePath: "/nataly-api/v1"
-# schemes:
-# - "http"
   contact:
     email: "carlinstr@gmail.com"
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-    
+host: "localhost:8080"
+basePath: "/api/v1"
+schemes:
+ - http    
 tags: 
   - name: "pagamentos"
     description: "Acesso a operações de pagamento"
@@ -133,9 +132,3 @@ definitions:
         type: "number"
         format: "double"
         description: "Valor do pagamento."
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /carledwinti/carledwinj-swagger-basic/1.0.0
-schemes:
- - https
- - http
